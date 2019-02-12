@@ -1,3 +1,0 @@
-[submodule "src/private"]
-	path = src/private
-	url = git@github.com:AlexAlbala/AlterNative-CXX-pvtLib.git
