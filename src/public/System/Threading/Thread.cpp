@@ -45,16 +45,16 @@ namespace System{
 		Thread::Thread(ParameterizedThreadStart* target)
 		{			
 			paramFunctor = *target;
-			internalParamFunctor = ParameterizedThreadStart(DELEGATE_FUNC(Thread::collectableParamThread, _1));
+			internalParamFunctor = ParameterizedThreadStart(DELEGATE_FUNC(Thread::collectableParamThread, boost::placeholders::_1));
 			
 			GC_get_stack_base(&sb);
 		}
 
 		void Thread::Sleep(int milliseconds)
 		{
-			//<ÑAPA>
+			//<ï¿½APA>
 			if(milliseconds < 0) while(1){}			
-			//</ÑAPA>
+			//</ï¿½APA>
 
 			boost::posix_time::milliseconds sleepTime(milliseconds);
 			boost::this_thread::sleep(sleepTime);

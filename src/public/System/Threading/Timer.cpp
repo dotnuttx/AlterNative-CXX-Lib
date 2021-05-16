@@ -1,6 +1,7 @@
 /**** TOTALLY TRANSLATED BY ALTERNATIVE (only changes the call to boost asio timers ****/
 #include "Timer.h"
 #include "Thread.h"
+#include <functional>
 
 namespace System {
 	namespace Threading {
@@ -213,7 +214,7 @@ namespace System {
 
 			
 			this->actualPeriod = period;
-			this->internalCallback = new TimerCallback(DELEGATE_FUNC(Timer::extend, _1));
+			this->internalCallback = new TimerCallback(DELEGATE_FUNC(Timer::extend, boost::placeholders::_1));
 			m_serv = AN_GLOBALS::io_service();
 			m_timer = new boost::asio::deadline_timer(*m_serv, boost::posix_time::milliseconds(dueTime));
 			m_timer->async_wait(*internalCallback);
