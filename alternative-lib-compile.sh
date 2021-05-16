@@ -13,8 +13,9 @@ fi
 
 cd $ALTERNATIVE_LIB_BIN
 rm CMakeCache.txt
-cmake -G "Unix Makefiles" ..
-make
+#cmake -G "Unix Makefiles" ..
+emcmake cmake -G "Unix Makefiles" ..
+make -j12
 
 if [ ! -d "$ALTERNATIVE_LIB_BUILD/libfiles" ]; then
   mkdir $ALTERNATIVE_LIB_BUILD/libfiles
